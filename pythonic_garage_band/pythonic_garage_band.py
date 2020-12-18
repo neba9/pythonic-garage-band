@@ -1,9 +1,11 @@
 class Band:
-    # new_list = []
-    def __init__(self, name, members=None):
+    instances = []
+
+    def __init__(self, name, members=None, list=None):
         self.name = name
         self.members = members
-        # band.new_list.append(self.name)
+        self.list = list
+        Band.instances.append(self.list)
          
     def __str__(self):
         return f"The band {self.name}"
@@ -11,21 +13,29 @@ class Band:
     def __repr__(self):
         return f"Band instance. name={self.name}, members={self.members}"
 
+    def play_solos(self):
+        return [player.play_solo() for player in self.members]
+        # solos = []
+        # for player in self.members:
+        #     solos.append(player.play_solos)
+        # return solos  
+              
+
        
 class Musician:
-    def __init__(self, name, instrument=None, solo=None):
+    def __init__(self, name, instrument=None, solos=None):
         self.name = name
         self.instrument = instrument
-        self.solo = solo
+        self.solos = solos
 
     def get_instrument(self):
         return self.instrument
 
     def play_solo(self):
-        return self.solo    
+        return self.solos    
 
 class Guitarist(Musician):
-    solo = 'face melting guitar solo'
+    solos = 'face melting guitar solo'
     def __init__(self, name):
         self.instrument = 'guitar'
         self.name = name
@@ -38,11 +48,11 @@ class Guitarist(Musician):
         return f"{self.__class__.__name__} instance. Name = {self.name}"
 
     def get_solo(self):
-        return self.solo    
+        return self.solos    
 
 
 class Bassist(Musician):
-    solo = 'bom bom buh bom'
+    solos = 'bom bom buh bom'
     def __init__(self, name):
         self.instrument = 'bass'
         self.name = name
@@ -55,10 +65,10 @@ class Bassist(Musician):
         return f"{self.__class__.__name__} instance. Name = {self.name}" 
 
     def get_solo(self):
-        return self.solo 
+        return self.solos 
 
 class Drummer(Musician):
-    solo = 'rattle boom crash'
+    solos = 'rattle boom crash'
     def __init__(self, name):
         self.instrument = 'drums'
         self.name = name
@@ -71,7 +81,7 @@ class Drummer(Musician):
         return f"{self.__class__.__name__} instance. Name = {self.name}"        
 
     def get_solo(self):
-        return self.solo
+        return self.solos
 
 
 

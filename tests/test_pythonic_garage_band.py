@@ -6,7 +6,7 @@ def test_version():
 
 import json
 import pytest
-# import yaml
+import yaml
 
 from pythonic_garage_band.pythonic_garage_band import Band, Musician, Guitarist, Bassist, Drummer
 
@@ -145,7 +145,7 @@ def test_play_solos_for_whole_band(one_band):
     assert solos[2] == "rattle boom crash"
 
 
-# @pytest.mark.skip("pending")
+@pytest.mark.skip("pending")
 def test_to_list():
     assert Band.to_list() == []
     Band("The Nobodies", [])
